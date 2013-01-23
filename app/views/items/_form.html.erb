@@ -1,0 +1,43 @@
+<%= form_for(@item) do |form| %>
+  <p>
+	<%= form.label :grocery_id, 'Grocery' %>
+	<%= form.collection_select :grocery_id, Grocery.all, :id, :name %>
+	<a href="#addgrocery-modal" role="button" class="btn" data-toggle="modal">Add a grocery</a>
+  </p>
+  <p>
+	<%= form.label :name, 'Item name' %>
+	<%= form.text_field :name %>
+  </p>
+  <p>
+	<%= form.label :brand, 'Item brand' %>
+	<%= form.text_field :brand %>
+  </p>
+  <p>	
+	<%= form.label :quantity, 'Quantity' %>
+	<%= form.text_field :quantity %>
+	<%= form.select :unit_of_measurement, [['mL'], ['liter'], ['gram'], ['kg'], ['pc'], ['oz']] %>
+  </p>
+  <p>
+	<%= form.label :price, 'Price' %>
+	<%= form.text_field :price %>
+  </p>
+  <p>
+	<%= form.submit button_label %>
+	<%= link_to 'Cancel', :controller => 'dashboard', :action => 'index' %>
+  </p>
+<% end %>
+
+<!-- Modal -->
+<div id="addgrocery-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>Add a Grocery</h3>
+  </div>
+  <div class="modal-body">
+    <%= render :partial => '/groceries/form' %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Save</button>
+  </div>
+</div>

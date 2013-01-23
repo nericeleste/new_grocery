@@ -1,0 +1,10 @@
+<%= form_for(@grocery) do |form| %>
+	<p>
+		<%= form.label :name, 'Name' %>
+		<%= form.text_field :name %>
+	</p>
+	<p>
+		<%= form.submit 'Create' %>
+		<%= link_to 'Cancel', :controller => 'items', :action => 'new' %>
+	</p>
+<% end %>
